@@ -31,7 +31,7 @@ while true; do
         clear
         sleep 0.1
 
-        ssh $SSH_ARGS
+        ssh -o ServerAliveInterval=60 $SSH_ARGS
 
         echo
         echo 'Press [Enter] to reconnect.'
@@ -43,7 +43,7 @@ while true; do
                 break
                 ;;
             *)
-                continue
+                echo
                 ;;
         esac
     done
