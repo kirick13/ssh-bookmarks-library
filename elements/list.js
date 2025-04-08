@@ -112,6 +112,7 @@ export default class ListElement extends Element {
 				break;
 			case null: {
 				const {
+					name,
 					host,
 					port,
 					user,
@@ -120,7 +121,7 @@ export default class ListElement extends Element {
 
 				writeFileSync(
 					process.argv[2],
-					`-i ${identity_file} ${user}@${host} -p ${port}`,
+					`-i ${identity_file} ${user}@${host} -p ${port} # name=${name}`,
 				);
 
 				return exit();

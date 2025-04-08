@@ -27,10 +27,16 @@ while true; do
         break
     fi
 
+    SSH_NAME=$(echo "$SSH_ARGS" | cut -d'#' -f2 | cut -d'=' -f2)
+    SSH_ARGS=$(echo "$SSH_ARGS" | cut -d'#' -f1)
+
     while true; do
         clear
         sleep 0.1
 
+        unset PROMPT_COMMAND
+        echo -ne "\033]1;$SSH_NAME\007"
+        echo -ne "\033]2;$SSH_NAME\007"
         ssh -o ServerAliveInterval=60 $SSH_ARGS
 
         echo
